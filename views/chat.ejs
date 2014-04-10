@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<title>Chat</title>
+
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="script.js"></script>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	
+</head>
+
+<style>
+.active {
+	background-color: yellow;
+}
+</style>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>Chat with Strangers</h1>
+		</header>
+
+		<input type="text" id="nickname_input" />
+		<button id="nickname_set" class="btn btn-default">Set Nickname</button>
+		
+		<!-- Data to/from Server -->
+		<div id="user_first_name"><%= user.local.first_name %></div>
+		<div id="user_email"><%= user.local.email %></div>
+		<div id="user_id"><%= user.id %></div>
+		<div id="curr_rooms">
+		</div>
+		<img class="loading" src="https://s3-us-west-2.amazonaws.com/shuffle-chat/ajax-loader.gif"></img>
+		<!--/ Data to/from Server -->
+
+		<div id="all_convo">
+			<!-- New convos go here -->
+		</div>
+		<!-- Template conversation, to be appended in 
+		<div class="convo active">
+			<div class="hidden room-id">
+				Room #1
+			</div>
+			<div class="chat-box">
+				<div class="chat-entries">
+					Hello World
+				</div>
+				<input type="text" class="message-input" />
+				<button class="send-message">Send</button>
+			</div>
+
+			<div class="chat-min hidden">
+				Minimized Chat
+			</div>
+		</div>
+		--> 
+
+		<div id="shuffle" class="btn btn-warning">Shuffle</div>
+	</div>
+</body>
+</html>

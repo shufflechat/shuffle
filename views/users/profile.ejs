@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<title>Shuffle</title>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+	<script src="../../profile.js"></script>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="hidden" id="user_id"><%= user.id %></div>
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span><%= user.local.first_name %>'s Profile Page</h1>
+		
+		<a href="/chat" class="btn btn-primary">Start a Chat</a>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+	<!-- Display Tags -->
+	<div class="row display_tags">
+		<h4>Your Tags:</h4>
+		<% for (var i = 0; i < user.tags.length; i++) { %>
+			<%= user.tags[i] %>
+
+		<% } %>
+	</div>
+
+	<!-- Add New Tags -->
+	<div class="row">
+		<h4>Add More Tags:</h4>
+		<p>Describe yourself to others.  Tags should be comma-separated, e.g.:   outgoing, reading, rock music</p>
+		<input type="text" id="new_tags"></input>
+		<button class="btn btn-primary" id="add_tags">Add Tags</button>
+	</div>
+
+	<hr>
+
+	<div class="row col-md-10">
+		<div class="col-md-4">
+			Side Menu
+		</div>
+		<div class="col-md-8">
+			Profile
+		</div>
+	</div>
+
+	<hr>
+</div>
+</body>
+</html>

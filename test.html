@@ -1,0 +1,97 @@
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+
+<div class="convo active">
+	<div class="hidden room-id">
+		Room #1
+	</div>
+	<div class="chat-box">
+		<div class="chat_entries">
+			Hello World
+		</div>
+		<input type="text" class="message_input" />
+		<button class="submit">Send</button>
+	</div>
+
+	<div class="chat-min hidden">
+		Minimized Chat
+	</div>
+</div>
+
+<hr>
+
+<div class="convo">
+	<div class="hidden room-id">
+		Room #2
+	</div>
+	<div class="chat-box">
+		<div class="chat_entries">
+			foobar
+		</div>
+		<input type="text" class="message_input" />
+		<button class="submit">Send</button>
+	</div>
+
+	<div class="chat-min">
+		Minimized Chat
+	</div>
+</div>
+
+<style>
+.active {
+	background-color: yellow;
+}
+
+/* Style for Notification in unread messages */
+.unread-notif-min {
+	.background-color: blue;
+}
+
+.hidden {
+	display: none;
+}
+
+</style>
+
+<script>
+// onclick event handler of the chat-min element
+function update_active() {
+	$('.convo.active .chat-box').addClass('hidden');
+	$('.convo').removeClass('active');	// Reset all the conversations at once
+
+	$(this).parent().addClass('active');
+	$('.convo.active .chat-box').removeClass('hidden');
+
+	// Hide the minified version of the chat
+	$('.chat-min').removeClass('hidden');
+	$(this).addClass('hidden');
+
+	var new_active = $(this).html();
+}
+
+// TODO stub: when the "message" event is received, we need to somehow figure out for which one to change the display
+// Potential idea - iterate through all the rooms on the page to find the one with the room_id from the event 
+function show_unread(){
+	// TODO
+}
+
+$(function() {
+	// Conversation History
+	var chat_content =  $('.convo.active .chat_entries').html();
+	console.log("chat_content: ", chat_content);
+
+	// Room ID
+	var room_id = $('.convo.active .room-id').html();
+	console.log('room_id: ', room_id);
+
+	// Body of the message
+	var msg_body = $('.convo.active .message_input');
+	console.log(msg_body);
+
+	// Name of the Chat room - the names of the participants in the convo
+	// TODO - replace with names of participants from server 
+
+	$('.chat-min').click(update_active);
+	$('.convo .chat-box .submit').click();		// TODO stub: emit 'message' event to server side 
+});
+
+</script>

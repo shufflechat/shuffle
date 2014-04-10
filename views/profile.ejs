@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<title>Shuffle</title>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+	<script src="profile.js"></script>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+<div class="container">
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
+		<a href="/chat" class="btn btn-primary">Start a Chat</a>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+	<div class="row">
+		Logged in with <strong>email</strong>: <%= user.local.email %><br>
+		User ID:  <div id="user_id"><%= user.id %></div>
+	</div>
+
+	<!-- Display Tags -->
+	<div class="row display_tags">
+
+	</div>
+
+	<!-- Add New Tags -->
+	<div class="row">
+		<p>Input your tags, comma-separated: </p>
+		<input type="text" id="new_tags"></input>
+		<button class="btn btn-primary" id="add_tags">Add Tags</button>
+	</div>
+
+	<div class="row col-md-10">
+		<div class="col-md-4">
+			Side Menu
+		</div>
+		<div class="col-md-8">
+			Profile
+		</div>
+	</div>
+</div>
+</body>
+</html>

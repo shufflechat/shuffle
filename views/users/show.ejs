@@ -1,0 +1,46 @@
+<!doctype html>
+
+<!doctype html>
+<html>
+<head>
+	<title>Shuffle</title>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+	<script src="../../profile.js"></script>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+<div class="container">
+	<div id="current_user_id"><%= current_user.id %></div>
+	<div id="user_id"><%= user.id %></div>
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span><%= user.local.first_name %>'s Profile Page</h1>
+	</div>
+
+	<hr>
+	<% if (current_user.friends.indexOf(user.id) == -1) { %>
+		<button id="add_friend" class="btn btn-primary">Add Friend</button>
+	<% } %>
+	<% if (current_user.pending_requests.indexOf(user.id) != -1) { %>
+		<button class="btn btn-primary">Friend Request Sent</button>
+	<% } %>
+	<% if (current_user.friends.indexOf(user.id) != -1) { %>
+		<button class="btn btn-primary"><span class="fa fa-check"></span>Your are friends with <%= user.local.first_name %></button>
+	<% } %>
+	<hr>
+
+	<!-- Display Tags -->
+	<div class="row display_tags">
+		<%= user.local.first_name %>'s tags:
+		<% for (var i = 0; i < user.tags.length; i++) { %>
+			<%= user.tags[i].name %>
+		<% } %> 
+	</div>
+</div>
+</body>
+</html>

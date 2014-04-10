@@ -1,0 +1,27 @@
+{
+  "name": "Shuffle",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~3.4.4",
+    "ejs": "~0.8.5",
+    "mongoose": "3.8.1",
+    "passport": "~0.1.17",
+    "connect-flash": "~0.1.1",
+    "bcrypt-nodejs": "latest"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "0.0.0",
+  "description": "Chatting App",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "github.com/johnyeung"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "John Yeung, Michael Yeung",
+  "license": "BSD"
+}

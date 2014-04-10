@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<title>Shuffle</title>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+	<script src="../../friends.js"></script>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+
+<body>
+<div class="user-id"><%= user.id %></div>
+
+<!-- If this is the logged-in user's friends page -->
+<% if (current_user.id == user.id) { %>
+	<h3>Your Friend Requests</h3>
+	<ul>
+		<% for (var i = 0; i < current_user.requesting_friends.slice(0, 20).length; i++) { %>
+			<li>
+				<a href='users/<%= current_user.requesting_friends[i] %>' />
+				
+				<div ciass="request-decision">
+					<form action="/users/friendship" data-remote="true" method="post">
+						<input type="hidden" name="type" value="accept">
+						<input type="hidden" name="curr_user_id" value='<%= current_user.id %>'>
+						<input type="hidden" name="user_id" value='<%= current_user.requesting_friends[i] %>'>
+						<button type="submit" class="handle-request btn btn-primary">Accept Request</button>
+					</form>
+					<form action="/users/friendship" data-remote="true" method="post">
+						<input type="hidden" name="type" value="accept">
+						<input type="hidden" name="curr_user_id" value='<%= current_user.id %>'>
+						<input type="hidden" name="user_id" value='<%= current_user.requesting_friends[i] %>'>
+						<button class="handle-request btn btn-default">Decline Request</button>
+					</form>
+				</div>
+			</li>
+		<% } %>
+	</ul>	
+
+<% } %>
+ 
+<!-- List the user's friends and friend requests -->
+<h3><%= user.local.first_name %>'s Friends</h3>
+<ul>
+	<% for (var i = 0; i < user.friends.slice(0, 50).length; i++) { %>
+		<li><a href='/users/<%= user.friends[i] %>' /><%= user.friends[i] %></li>
+
+		<!-- TODO work on remove friends -->	
+	<% } %>
+</ul>
+
+</body>
